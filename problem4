@@ -9,12 +9,8 @@ class TextStyleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Text Style Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const TextStyleDemo(),
+    return const MaterialApp(
+      home: TextStyleDemo(),
     );
   }
 }
@@ -25,112 +21,30 @@ class TextStyleDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Text Style Examples'),
-      ),
+      appBar: AppBar(title: const Text('Text Styles')),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Column Examples',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Large text with light weight',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
-            const Text(
-              'Medium italic text',
-              style: TextStyle(
-                fontSize: 18,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
+          children: const [
             Text(
-              'Custom color text',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.deepPurple[400],
-              ),
+              'Bold Text',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            const Text(
-              'Text with shadow',
-              style: TextStyle(
-                fontSize: 20,
-                shadows: [
-                  Shadow(
-                    blurRadius: 3.0,
-                    color: Colors.grey,
-                    offset: Offset(2.0, 2.0),
-                  ),
-                ],
-              ),
+            SizedBox(height: 10),
+            Text(
+              'Italic Text',
+              style: TextStyle(fontStyle: FontStyle.italic),
             ),
-            const Divider(height: 30),
-            
-            const Text(
-              'Row Examples',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-              ),
+            SizedBox(height: 10),
+            Text(
+              'Underlined Text',
+              style: TextStyle(decoration: TextDecoration.underline),
             ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text(
-                  'Bold',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'Italic',
-                  style: TextStyle(fontStyle: FontStyle.italic),
-                ),
-                Text(
-                  'Underline',
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Text(
-                  'Red',
-                  style: TextStyle(
-                    color: Colors.red[400],
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(width: 20),
-                Text(
-                  'Green',
-                  style: TextStyle(
-                    color: Colors.green[400],
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(width: 20),
-                Text(
-                  'Blue',
-                  style: TextStyle(
-                    color: Colors.blue[400],
-                    fontSize: 18,
-                  ),
-                ),
-              ],
+            SizedBox(height: 10),
+            Text(
+              'Colored Text',
+              style: TextStyle(color: Colors.blue),
             ),
           ],
         ),
