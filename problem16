@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Animated Container',
+      home: AnimatedContainerDemo(),
+    );
+  }
+}
+
+class AnimatedContainerDemo extends StatefulWidget {
+  @override
+  _AnimatedContainerDemoState createState() => _AnimatedContainerDemoState();
+}
+
+class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
+  double _width = 100.0;
+  double _height = 100.0;
+  Color _color = Colors.blue;
+  BorderRadiusGeometry _borderRadius = BorderRadius.circular(8.0);
+
+  void _changeProperties() {
+    setState(() {
+      _width = _width == 100.0 ? 200.0 : 100.0;
+      _height = _height == 100.0 ? 200.0 : 100.0;
+      _color = _color == Colors.blue ? Colors.red : Colors.blue;
+      _borderRadius = _borderRadius == BorderRadius.circular(8.0)
+          ? BorderRadius.circular(50.0)
+          : BorderRadius.circular(8.0);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Animated Container'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            AnimatedContainer(
+              width: _width,
+              height: _height,
+              decoration: BoxDecoration(
+                color: _color,
+                borderRadius: _borderRadius,
+              ),
+              duration: Duration(seconds: 1),
+              curve: Curves.easeInOut,
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _changeProperties,
+              child: Text('Change Properties'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
