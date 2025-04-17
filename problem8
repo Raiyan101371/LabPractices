@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Navigation Drawer Example',
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Screen'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Navigation Drawer'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Screen 1'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Screen1()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Screen 2'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Screen2()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Screen 3'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Screen3()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Text('Welcome to the Home Screen!'),
+      ),
+    );
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen 1'),
+      ),
+      body: Center(
+        child: Text('This is Screen 1'),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen 2'),
+      ),
+      body: Center(
+        child: Text('This is Screen 2'),
+      ),
+    );
+  }
+}
+
+class Screen3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen 3'),
+      ),
+      body: Center(
+        child: Text('This is Screen 3'),
+      ),
+    );
+  }
+}
