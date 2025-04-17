@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Image Grid',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Image Grid'),
+        ),
+        body: ImageGrid(),
+      ),
+    );
+  }
+}
+
+class ImageGrid extends StatelessWidget {
+  final List<String> imageUrls = [
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/150',
+    'https://via.placeholder.com/150',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      padding: EdgeInsets.all(8.0),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 8.0,
+        mainAxisSpacing: 8.0,
+      ),
+      itemCount: imageUrls.length,
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8.0),
+            image: DecorationImage(
+              image: NetworkImage(imageUrls[index]),
+              fit: BoxFit.cover,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
