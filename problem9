@@ -1,0 +1,112 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Custom Card Example',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Custom Card Example'),
+        ),
+        body: ItemList(),
+      ),
+    );
+  }
+}
+
+class ItemList extends StatelessWidget {
+  final List<Map<String, String>> items = [
+    {
+      'image': 'https://via.placeholder.com/150',
+      'title': 'Item 1',
+      'subtitle': 'Subtitle 1',
+      'description': 'This is the description for Item 1.',
+    },
+    {
+      'image': 'https://via.placeholder.com/150',
+      'title': 'Item 2',
+      'subtitle': 'Subtitle 2',
+      'description': 'This is the description for Item 2.',
+    },
+    {
+      'image': 'https://via.placeholder.com/150',
+      'title': 'Item 3',
+      'subtitle': 'Subtitle 3',
+      'description': 'This is the description for Item 3.',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return CustomCard(
+          image: items[index]['image']!,
+          title: items[index]['title']!,
+          subtitle: items[index]['subtitle']!,
+          description: items[index]['description']!,
+        );
+      },
+    );
+  }
+}
+
+class CustomCard extends StatelessWidget {
+  final String image;
+  final String title;
+  final String subtitle;
+  final String description;
+
+  CustomCard({
+    required this.image,
+    required this.title,
+    required this.subtitle,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      margin: EdgeInsets.all(10),
+      child: MouseRegion(
+        onEnter: (_) => _onHover(true),
+        onExit: (_) => _onHover(false),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(image),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                title,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                subtitle,
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(description),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _onHover(bool isHovered) {
+    // Implement hover effect logic here
+  }
+}
